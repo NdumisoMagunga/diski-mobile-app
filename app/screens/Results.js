@@ -16,7 +16,7 @@ import {
 import TopBar from '../components/TopBar';
 import ScoreComponent from '../components/score/scoreComponent';
 
-import image from '../images/sample.jpg';
+import image from '../images/Tlogo.png';
 import background from '../components/score/background.png';
 
 import ResultsComponent from '../components/score/resultsComponent';

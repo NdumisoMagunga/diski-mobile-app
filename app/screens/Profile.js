@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import { View,ScrollView,StyleSheet,Dimensions,Image,ImageBackground } from 'react-native';
-import { Text } from 'react-native-elements';
+import { Container,Content, List, ListItem, Text, Left, Right, Icon } from 'native-base';
 import TopBar from '../components/TopBar';
 import pic from '../images/sample.jpg';
 import Background from '../images/background.png';
@@ -16,11 +16,49 @@ class Profile extends Component{
                 <TopBar title={'Profile'}  navigation={() => {this.props.navigation.goBack()}} />
                     <View style={Styles.headerContainer}>
                         <Image source={pic} style={Styles.img}/>
-                        <Text style={Styles.textStyle}>Name: Player 1</Text>
-                        <Text style={Styles.textStyle}>Date of Birth: 1994/09/19</Text>
-                        <Text style={Styles.textStyle}>Position: Defender</Text>
-                        <Text style={Styles.textStyle}>Role: Crucial first team player</Text>
                     </View>
+                    
+                   <Container>
+                       <Content>
+                           <List>
+                               <ListItem>
+                                   <Left>
+                                       <Text style={{fontWeight:'bold'}}>Name:</Text> 
+                                   </Left>
+                                   <Left>
+                                       <Text style={{flexDirection:'row'}}>Ndumiso Magunga</Text>
+                                   </Left>
+                               </ListItem>
+
+                               <ListItem>
+                                   <Left>
+                                       <Text style={{fontWeight:'bold'}}>Date Of Birth:</Text> 
+                                   </Left>
+                                   <Left>
+                                       <Text style={{flexDirection:'row'}}>09/SEP/1994</Text>
+                                   </Left>
+                               </ListItem>
+
+                                <ListItem>
+                                   <Left>
+                                       <Text style={{fontWeight:'bold'}}>Position:</Text> 
+                                   </Left>
+                                   <Left>
+                                       <Text style={{flexDirection:'row'}}>Defender</Text>
+                                   </Left>
+                               </ListItem>
+
+                                <ListItem>
+                                   <Left>
+                                       <Text style={{fontWeight:'bold'}}>Team:</Text> 
+                                   </Left>
+                                   <Left>
+                                       <Text style={{flexDirection:'row'}}>The Bees</Text>
+                                   </Left>
+                               </ListItem>
+                           </List>
+                       </Content>
+                   </Container>
             </ScrollView>
             </ImageBackground>
         )
@@ -31,30 +69,24 @@ const Styles = StyleSheet.create({
     img:{
         // width:Dimensions.get('window').width/2,
         // height: Dimensions.get('window').height/2,
-        width: 200,
-        height: 200,
-        borderRadius:20,
-        paddingVertical: 20,
-        borderWidth: 4,
-        borderColor: '#ddd',
-        borderBottomWidth: 0,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 15,
-        marginLeft: 5,
-        marginRight: 5,
-        marginTop: 10,
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height/2,
+       
     },
     headerContainer:{
         alignItems: 'center',
         justifyContent: 'center', 
             },
         textStyle:{
-            fontSize:18,
-            textAlign:'left',
+            fontSize:17,
             color:'black',
-            fontWeight:'200'
+            fontWeight:'bold',
+            textAlign:'justify',
+            fontFamily:'italic',
+            
+            
+           
+           
         },
 
         backImage:{

@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import ScoreComponent from '../components/score/scoreComponent';
 import * as actions from '../actions';
 import TopBar from '../components/TopBar';
-import image from '../images/sample.jpg';
+import image from '../images/Tlogo.png';
 import background from '../components/score/background.png';
 import {format} from 'date-fns';
 
