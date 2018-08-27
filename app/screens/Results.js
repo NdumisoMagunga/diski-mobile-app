@@ -18,7 +18,6 @@ import ScoreComponent from '../components/score/scoreComponent';
 
 import image from '../images/Tlogo.png';
 import background from '../components/score/background.png';
-
 import ResultsComponent from '../components/score/resultsComponent';
 
 
@@ -41,6 +40,7 @@ class Results extends Component{
                 </View>
             <ScrollView style={{flex: 1}}>
             <View>
+                
                 <ResultsComponent
                     teamA={'Manchester United'} 
                     teamAimage={image}

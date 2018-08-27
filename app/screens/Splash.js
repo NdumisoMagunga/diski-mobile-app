@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import {
-    View,
-    Image,
     Dimensions,
     ImageBackground
 } from 'react-native';
 
 import splashScreen from '../images/screen.png';
-import background from '../images/background.png';
 
 class Splash extends Component{
 

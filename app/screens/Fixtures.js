@@ -13,7 +13,7 @@ import {format} from 'date-fns';
 class Fixtures extends Component{
 selectedFixture(id){
     this.props.fetchFixtures(id);
-    this.props.navigation.navigate('GameStats');
+    this.props.navigation.navigate('');
 }
 
         

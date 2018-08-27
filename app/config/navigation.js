@@ -13,7 +13,7 @@ import Splash from '../screens/Splash';
 import SelectTeam from '../screens/SelectTeam';
 import Profile from '../screens/Profile';
 import Tournaments from '../screens/Tournaments';
-import GameStats from '../screens/GameStats';
+import GameSummary from '../screens/GameSummary';
 
 export const AppNav = StackNavigator({
     Splash:{
@@ -85,12 +85,12 @@ export const AppNav = StackNavigator({
         }
     },
 
-    GameStats: {
-        screen: GameStats,
-        navigationOptions: {
-            title:'GameStats'
-        }
-    },
+   GameSummary:{
+       screen: GameSummary,
+       navigationOptions:{
+           title:'GameSummary',
+       }
+   },
 
     
 },

@@ -11,7 +11,7 @@ class Profile extends Component{
 
     render(){
         return(
-            <ImageBackground source={Background} style={Styles.backImage}>
+            <ImageBackground source={Background} style={Styles.backImage} >
             <ScrollView>
                 <TopBar title={'Profile'}  navigation={() => {this.props.navigation.goBack()}} />
                     <View style={Styles.headerContainer}>
