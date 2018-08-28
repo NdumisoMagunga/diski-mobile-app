@@ -32,9 +32,8 @@ selectedFixture(id){
                     {
                         this.props.fixtures.map((data, index) => {
                             return (
-                                <TouchableOpacity onPress={() => this.selectedFixture(data._id)}>
+                                <TouchableOpacity key={index} onPress={() => this.selectedFixture(data._id)}>
                                 <ScoreComponent 
-                                key={index}
                                     teamA={data.cup_team_home.team.name} 
                                     teamAimage={image}
                                     teamBimage={image}

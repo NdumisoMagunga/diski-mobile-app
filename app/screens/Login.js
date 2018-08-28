@@ -1,67 +1,81 @@
 import React, {Component} from 'react';
-import { View, ScrollView,Image, Dimensions,StyleSheet,TouchableOpacity, ToastAndroid,
-    ActivityIndicator,Linking,Platform,
+import { View, ScrollView,Image,
+     Dimensions,
+     StyleSheet,
+     TouchableOpacity,
+     ImageBackground,
+     AsyncStorage,
+     KeyboardAvoidingView,
  } from 'react-native';
+
 import {Text, b, Button} from 'react-native-elements';
 import {Input} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import logo from '../images/logo.png';
+import Background from '../images/background.png';
 
 import { userhandler } from '../config/userHandler';
 import {connect} from 'react-redux';
 import * as actions from '../actions'
 
+
 class Login extends Component {
-    state = {
-        isLoading:false,
-    };
+   constructor(props){
+       super(props);
+       this.state ={
+        username:'',
+        password:'',
+       }
+   }
 
-    componentDidMount(){
+   componentDidMount() {
+       this._loadInitialState().done();
+   }
 
+   _loadInitialState = async () => {
+       var value = await AsyncStorage.getItem('user');
+       if(value !== null) {
+           this.props.navigation.navigate('GameSummary');
+       }
+   }
+
+   login = () => {
+    /*fetch('https://portal.diskinine9.co.za/api/login',{
+    method:'POST',
+    Headers: {
+        'accept': 'application/json',
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password,
+    })
+})
+
+.then((Response) => Response.json())
+.then ((res) => {
+    if(res.success === true) {
+        AsyncStorage.setItem('user', res.user);
+        this.props.navigation.navigate('GameSummary')
     }
 
-    loginWithAccount = () => {
-        this.setState({
-            isLoading:true,
-        });
+    else{*/
+        alert('you are not in the database');
+    //}
+//})
+//.done();
+}
 
-        fetch('http://portal.diskinine9.co.za/api/login', {
-            method: 'POST',
-            header: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email : this.state.email,
-                password: this.state.password,
-            }),
-        }).then((result) => result.json())
-        .then(user => {
 
-            if(user._id){
-                this.setState({
-                    isLoading:false,
-                });
-
-                userhandler.saveUser(user);
-                this.props.navigation.navigate('');
-                ToastAndroid.show("Successfully logged In", ToastAndroid.SHORT)
-                this.setState({
-                    isLoading:false
-                });
-            }else{
-
-                this.setState({
-                    isLoading:false
-                });
-                ToastAndroid.show("oppp!! Failed to log in, please try again", ToastAndroid.SHORT)
-            }
-        })
-    }
     render(){
-        const { user } = this.state;
         return(
-            <ScrollView style={styles.contaner}>
+            <ImageBackground
+            source={Background}
+            style={{height:Dimensions.get('window').height,
+                    width:Dimensions.get('window').width }}
+        >
+
+            <ScrollView bahavior ='padding' style={{flex:1}}>
 
             <View style={{alignSelf:'center'}}>
             <Image source={logo} style={{resizeMode: 'contain', marginTop:50, width: Dimensions.get("window").width/1.25,height:150}}/>
@@ -75,14 +89,14 @@ class Login extends Component {
                 <Input
                 keyboardType={'email-address'}
                 placeholder='Email'
-                
                 leftIcon={<Icon
                     name='user'
                     size={24}
                     color='black'
                     />} 
-                    style={{borderBottomColor:'red', borderBottomWidth:1}}
-                    onChange={(e) => {this.setState({email: e.target.value})}}
+                    style={{borderBottomColor:'red', borderBottomWidth:1,textDecorationColor:'black'}}
+                    onChange={(username) => {this.setState({username})}}
+                    underlineColorAndroid = 'transparent'
                 />
 
 
@@ -95,13 +109,18 @@ class Login extends Component {
                     size={24}
                     color='black'
                     />} 
-                    style={{borderBottomColor:'red', borderBottomWidth:1}}
-                    onChange={(e) => {this.setState({password: e.target.value})}}
+                    
+                    sesureTextEntry={true}
+                    style={{borderBottomColor:'red', borderBottomWidth:1,textDecorationColor:'black'}}
+                    onChange={(password) => {this.setState({password})}}
+                    underlineColorAndroid = 'transparent'
                 />
 
             </View>
 
             <View style={{alignSelf:'center', width: Dimensions.get('window').width/1.4, marginTop:15}} >
+
+            <TouchableOpacity>
             <Button
                     title="Login"
                     titleStyle={{ fontWeight: "200" }}
@@ -114,7 +133,9 @@ class Login extends Component {
                     width: 295,
                     marginTop:15
                 }}     
+                onPress={this.login}
             />
+            </TouchableOpacity>
 
              <Button
                     title="Back"
@@ -137,6 +158,7 @@ class Login extends Component {
                 <Text style={{color:'red', textAlign:'center', margin:10}}>forgot your password?</Text>
             </TouchableOpacity>
             </ScrollView>
+            </ImageBackground>
         )
     }
 }
@@ -146,7 +168,6 @@ class Login extends Component {
 const styles = StyleSheet.create({
     contaner:{
         flex:1,
-        backgroundColor:'white'
     },
 
     Input_view:{

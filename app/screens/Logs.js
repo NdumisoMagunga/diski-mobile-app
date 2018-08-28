@@ -11,14 +11,6 @@ import {connect} from 'react-redux';
 class Logs extends Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   tableData: [
-    //     ['1', 'Chelsea', '3', '4','5','8','1','3','5','8'],
-    //     ['2', 'Barcelona', '3', '4','5','8','1','3','5','8'],
-    //     ['3', 'Manchester City', '3', '4','5','8','1','3','5','8'],
-    //     ['4', 'Arsenal FC', '3', '4','5','8','1','3','5','8'],
-    //   ]
-    // }
   }
 
   render() {

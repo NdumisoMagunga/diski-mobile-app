@@ -34,6 +34,13 @@ export const AppNav = StackNavigator({
             title: 'Home'
         }
     },
+
+    Login: {
+        screen: Login,
+        navigationOptions: {
+            title: 'Login'
+        }
+    },
     
     Tournaments: {
         screen: Tournaments,

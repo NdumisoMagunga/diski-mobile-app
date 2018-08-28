@@ -18,20 +18,6 @@ import logo from '../images/logo.png';
 
 class Select extends Component{
 
-    constructor(props){
-        super(props);
-        this.state = {
-            isLoading: false
-        }
-        this.loadingState = this.loadingState.bind(this);
-    }
-
-    loadingState(){
-        this.setState({
-            isLoading: !this.state.isLoading
-        })
-    }
-
     render(){
         return(
             <ScrollView style={styles.container}>
@@ -62,11 +48,6 @@ class Select extends Component{
 
                 <Button
                     title="FAN"
-
-
-                    loading={this.state.loadingState}
-
-
                     titleStyle={{ fontWeight: "200" }}
                     buttonStyle={{
                     backgroundColor: "rgba(0, 0,0, 1)",
